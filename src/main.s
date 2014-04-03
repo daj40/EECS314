@@ -25,6 +25,19 @@ main:
 	jr $ra
 	nop
 
+read_command:
+	li $t0, 0xA
+	
+
+read_command_loop:
+	li $v0, 12
+	syscall
+
+	la $t1, input_length
+	
+	
+	bne $a0, $t0, read_command_loop
+
 refresh_screen:
 	add $t0, $zero, $a0
 	
@@ -55,3 +68,6 @@ blank_line_loop:
 	bne $t0, $zero, blank_line_loop
 	
 	jr $ra
+
+.data
+input_string: .space 100 # 99 char string
