@@ -61,6 +61,10 @@ read_command_loop:
 
 refresh_screen:
 	add $t2, $zero, $a0
+
+	li $v0, 4
+	la $a0, clear_screen
+	syscall
 	
 	li $v0, 4
 	la $a0, input_prompt
